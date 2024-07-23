@@ -28,31 +28,41 @@
             font-weight: 400;
         }
         .media-container {
-            height: 100vh;
+            min-height: 100vh;
             width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+            padding: 50px 0;
         }
-        .photo, .video-container {
-            max-width: 90%;
-            max-height: 80%;
-            object-fit: contain;
-            z-index: 1;
-        }
-        .video-container {
-            width: 80%;
+        .polaroid-container {
+            background: url('https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/polaroid.png') no-repeat center center;
+            background-size: contain;
+            width: 90%;
+            max-width: 600px;
             height: 0;
-            padding-bottom: 45%; /* 16:9 Aspect Ratio */
+            padding-bottom: 105%;
             position: relative;
+            margin: 20px auto;
         }
-        .video-container iframe {
+        .polaroid-container .photo,
+        .polaroid-container .video-container {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 9%;
+            left: 9%;
+            width: 82%;
+            height: 67%;
+            object-fit: cover;
+        }
+        .polaroid-container .video-container {
+            padding-bottom: 0;
+            height: 67%;
+        }
+        .polaroid-container .video-container video {
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
         .yarn {
             position: absolute;
@@ -85,6 +95,7 @@
             transition: all 0.3s ease;
             z-index: 2;
             font-weight: 700;
+            font-size: 14px;
         }
         .post-it:nth-child(odd) {
             transform: rotate(-5deg);
@@ -120,7 +131,9 @@
 
     <div class="media-container">
         <div class="yarn"></div>
-        <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/univpm.jpg" alt="UNIVPM" class="photo">
+        <div class="polaroid-container">
+            <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/univpm.jpg" alt="UNIVPM" class="photo">
+        </div>
         <div class="post-it yellow" style="top: 20%; left: 10%;" onclick="toggleContent(this)">
             Da UNIVPM con furore! 🏫
             <div class="post-it-content">Le nostre strade si sono incrociate qui e perciò è da qui che inizia questo album.</div>
@@ -128,14 +141,16 @@
         <div class="post-it pink" style="bottom: 20%; right: 10%;" onclick="toggleContent(this)">
             O forse sarebbe meglio dire da qui? 
             <div class="post-it-content">
-                <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/treno_regionale.jpg" alt="Treno regionale" class="photo">
+                <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/treno_regionale.jpg" alt="Treno regionale" style="max-width: 100%; height: auto;">
             </div>
         </div>
     </div>
 
     <div class="media-container">
         <div class="yarn"></div>
-        <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/tiger_ancona.jpg" alt="Tiger Ancona" class="photo">
+        <div class="polaroid-container">
+            <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/tiger_ancona.jpg" alt="Tiger Ancona" class="photo">
+        </div>
         <div class="post-it pink" style="bottom: 20%; right: 10%;" onclick="toggleContent(this)">
             E proprio in questo negozio 🏪
             <div class="post-it-content">È avvenuto il PIZZETTA DAY 🍕
@@ -145,8 +160,11 @@
 
     <div class="media-container">
         <div class="yarn"></div>
-        <video src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/Meli_imitazione_Elena.mp4" controls="controls" style="max-width: 730px; position: relative; z-index: 0;"></video>
-        </video>
+        <div class="polaroid-container">
+            <div class="video-container">
+                <video src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/Meli_imitazione_Elena.mp4" controls="controls"></video>
+            </div>
+        </div>
         <div class="post-it green" style="top: 20%; right: 15%;" onclick="toggleContent(this)">
             Abbiamo chattato un sacco 🗨️
             <div class="post-it-content">E con che metodi di approccio...🫶🏻</div>
@@ -155,7 +173,9 @@
 
     <div class="media-container">
         <div class="yarn"></div>
-        <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/mantucci_complimenti.jpg" alt="Mantucci complimenti" class="photo">
+        <div class="polaroid-container">
+            <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/mantucci_complimenti.jpg" alt="Mantucci complimenti" class="photo">
+        </div>
         <div class="post-it blue" style="bottom: 25%; left: 15%;" onclick="toggleContent(this)">
             Sicuramente ci sono state performance migliori 🏆
             <div class="post-it-content">COMPLIMENTI!</div>
@@ -164,7 +184,9 @@
 
     <div class="media-container">
         <div class="yarn"></div>
-        <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/parchetto_rio.png" alt="Parchetto Rio" class="photo">
+        <div class="polaroid-container">
+            <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/parchetto_rio.png" alt="Parchetto Rio" class="photo">
+        </div>
         <div class="post-it green" style="top: 20%; right: 15%;" onclick="toggleContent(this)">
             Poi dopo mesi di lockdown e un gelato schiantato a terra
             <div class="post-it-content">In questo parchetto magico...💋</div>
@@ -173,15 +195,15 @@
     
     <div class="media-container">
         <div class="yarn"></div>
-        <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/compleanno_meli2020.jpg" alt="Compleanno Meli 2020" class="photo">
+        <div class="polaroid-container">
+            <img src="https://raw.githubusercontent.com/LeonardoAcquaroli/Digital-photo-book/main/media/compleanno_meli2020.jpg" alt="Compleanno Meli 2020" class="photo">
+        </div>
         <div class="post-it yellow" style="top: 20%; left: 10%;" onclick="toggleContent(this)">
             Tra una pizzetta e una canzone di Dua Lipa in auto
             <div class="post-it-content">Questa è stata la nostra prima foto pubblica e ha fatto scalpore 😡</div>
         </div>
     </div>
 
-    <!-- Add more media-container divs for additional photos or videos -->
-    
     <script>
         function toggleContent(postIt) {
             const content = postIt.querySelector('.post-it-content');
