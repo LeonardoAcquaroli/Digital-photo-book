@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Photo Album</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        .photo-container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .photo {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+        .notes {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .nav-buttons {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .nav-buttons button {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="photo-container">
+        <img src="/api/placeholder/800/600" alt="Photo 1" class="photo">
+        <div class="notes">
+            <h3>Photo 1 Title</h3>
+            <p>Notes about this photo...</p>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="alert('Previous photo')">↑</button>
+            <button onclick="alert('Next photo')">↓</button>
+        </div>
+    </div>
+
+    <div class="photo-container">
+        <img src="/api/placeholder/800/600" alt="Photo 2" class="photo">
+        <div class="notes">
+            <h3>Photo 2 Title</h3>
+            <p>Notes about this photo...</p>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="alert('Previous photo')">↑</button>
+            <button onclick="alert('Next photo')">↓</button>
+        </div>
+    </div>
+
+    <!-- Add more photo-container divs for additional photos -->
+
+    <script>
+        // You can add JavaScript here for more advanced functionality
+    </script>
+</body>
+</html>
