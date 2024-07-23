@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Photo Album</title>
+    <title>My Photo Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+        }
+        .title-container {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to bottom, #4a90e2, #87cefa);
+            color: white;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        h2 {
+            margin: 10px 0 0;
+            font-weight: 400;
         }
         .photo-container {
             height: 100vh;
             width: 100vw;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -24,56 +39,105 @@
             max-width: 90%;
             max-height: 80%;
             object-fit: contain;
+            z-index: 1;
         }
-        .notes {
+        .yarn {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.7);
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #ff6b6b;
+            transform: translateX(-50%);
+        }
+        .yarn::before, .yarn::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+        .yarn::before { top: 0; }
+        .yarn::after { bottom: 0; }
+        .post-it {
+            position: absolute;
+            width: 100px;
+            height: 100px;
             padding: 10px;
-            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+            font-weight: 700;
         }
-        .nav-buttons {
+        .post-it:nth-child(odd) {
+            transform: rotate(-5deg);
+        }
+        .post-it:nth-child(even) {
+            transform: rotate(5deg);
+        }
+        .post-it:hover {
+            transform: scale(1.05);
+        }
+        .post-it-content {
+            font-size: 14px;
+            font-weight: 400;
+            display: none;
             position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .nav-buttons button {
-            display: block;
-            margin: 10px 0;
-        }
+        .post-it.yellow { background-color: #feff9c; }
+        .post-it.pink { background-color: #ff7eb9; }
+        .post-it.green { background-color: #7afcff; }
+        .post-it.blue { background-color: #adffff; }
     </style>
 </head>
 <body>
+    <div class="title-container">
+        <h1>My Photo Journey</h1>
+        <h2>A visual story of memories and moments</h2>
+    </div>
+
     <div class="photo-container">
+        <div class="yarn"></div>
         <img src="/api/placeholder/800/600" alt="Photo 1" class="photo">
-        <div class="notes">
-            <h3>Photo 1 Title</h3>
-            <p>Notes about this photo...</p>
+        <div class="post-it yellow" style="top: 20%; left: 10%;" onclick="toggleContent(this)">
+            Memory #1
+            <div class="post-it-content">This was such a special day. We explored the city and found this amazing hidden cafe.</div>
         </div>
-        <div class="nav-buttons">
-            <button onclick="alert('Previous photo')">↑</button>
-            <button onclick="alert('Next photo')">↓</button>
+        <div class="post-it pink" style="bottom: 20%; right: 10%;" onclick="toggleContent(this)">
+            Feeling blessed
+            <div class="post-it-content">Grateful for the little moments that make life beautiful.</div>
         </div>
     </div>
 
     <div class="photo-container">
+        <div class="yarn"></div>
         <img src="/api/placeholder/800/600" alt="Photo 2" class="photo">
-        <div class="notes">
-            <h3>Photo 2 Title</h3>
-            <p>Notes about this photo...</p>
+        <div class="post-it green" style="top: 30%; right: 15%;" onclick="toggleContent(this)">
+            Adventure time!
+            <div class="post-it-content">We decided to take a spontaneous road trip. Best decision ever!</div>
         </div>
-        <div class="nav-buttons">
-            <button onclick="alert('Previous photo')">↑</button>
-            <button onclick="alert('Next photo')">↓</button>
+        <div class="post-it blue" style="bottom: 25%; left: 15%;" onclick="toggleContent(this)">
+            New friends
+            <div class="post-it-content">Met some amazing people on this journey. Friendship knows no boundaries.</div>
         </div>
     </div>
 
     <!-- Add more photo-container divs for additional photos -->
 
     <script>
-        // You can add JavaScript here for more advanced functionality
+        function toggleContent(postIt) {
+            const content = postIt.querySelector('.post-it-content');
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        }
     </script>
 </body>
 </html>
